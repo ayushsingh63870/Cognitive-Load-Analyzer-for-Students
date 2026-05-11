@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <style>
+    body {
+        font-family: Arial;
+        text-align: center;
+        padding: 30px;
+    }
+
+    canvas {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Quiz Result</h1>
+
+<h2>Cognitive Load: {{ load }}</h2>
+
+<h3>Details</h3>
+
+<p>Average Time per Question: {{ avg_time }} seconds</p>
+<p>Accuracy: {{ (accuracy * 100) | round(2) }}%</p>
+<h3>Suggestion:</h3>
+<p>{{ suggestion }}</p>
+
+<hr>
+
+<h2>Performance Graph</h2>
+<div id="data" data-accuracy="{{ accuracy }}"></div>
+<canvas id="myChart" width="400" height="200"></canvas>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const dataElement = document.getElementById("data");
+
+    const acc = parseFloat(dataElement.getAttribute("data-accuracy"));
+
+    const correct = acc * 100;
+    const wrong = (1 - acc) * 100;
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Correct %', 'Wrong %'],
+            datasets: [{
+                label: 'Performance',
+                data: [correct, wrong]
+            }]
+        }
+    });
+</script>
+<br><br>
+
+<a href="/dashboard">
+    <button>Back to Dashboard</button>
+</a>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .quiz-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .option {
+            display: block;
+            background: #ecf0f1;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #d0d7de;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="quiz-box">
+
+<h2>{{ question[1] }}</h2>
+
+<form method="POST">
+
+    <label class="option">
+        <input type="radio" name="answer" value="{{ question[2] }}" required> {{ question[2] }}
+    </label>
+
+    <label class="option">
+        <input type="radio" name="answer" value="{{ question[3] }}"> {{ question[3] }}
+    </label>
+
+    <label class="option">
+        <input type="radio" name="answer" value="{{ question[4] }}"> {{ question[4] }}
+    </label>
+
+    <label class="option">
+        <input type="radio" name="answer" value="{{ question[5] }}"> {{ question[5] }}
+    </label>
+
+    <input type="hidden" name="q_index" value="{{ q_index }}">
+    <input type="hidden" name="start_time" id="start_time">
+
+    <button type="submit">Next</button>
+
+</form>
+
+</div>
+
+<script>
+    document.getElementById("start_time").value = Date.now();
+</script>
+
+</body>
+</html>

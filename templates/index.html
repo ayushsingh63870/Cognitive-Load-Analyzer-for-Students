@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cognitive Load Analyzer</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial;
+            text-align: center;
+
+            /* SAME animated background */
+            background: linear-gradient(270deg, #6a11cb, #2575fc, #ff6a00);
+            background-size: 600% 600%;
+            animation: gradientMove 10s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            color: white;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+<img src="{{ url_for('static', filename='logo.png') }}" width="100">
+    <h1>Welcome to Cognitive Load Analyzer</h1>
+    <p>Analyze your performance and mental workload efficiently</p>
+
+    <br>
+
+    <a href="/login">
+        <button>Login</button>
+    </a>
+
+    <a href="/register">
+        <button>Register</button>
+    </a>
+
+</div>
+
+</body>
+</html>
